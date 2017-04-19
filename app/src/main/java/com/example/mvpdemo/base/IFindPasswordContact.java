@@ -1,0 +1,61 @@
+package com.example.mvpdemo.base;
+
+/**
+ * 找回密码的MVP接口管理类
+ * Created by Administrator on 2017/4/16.
+ */
+
+public interface IFindPasswordContact {
+    interface View extends BaseMVP.BaseView {
+        String getAccount();
+
+        String getEmail();
+
+        String getCheckCode();
+
+        boolean canSubmit();
+
+        void submit();
+
+        /**
+         * 发送验证码
+         */
+        void sendCheckCode();
+
+        void countDownDisable(String data);
+
+        void countDownEnable(String data);
+
+        void jump2ModifyPassword();
+    }
+
+    interface Presenter extends BaseMVP.BasePresenter {
+        void submit(String account, String email, String checkCode);
+
+        void sendCheckCode(String account, String email);
+
+        void checkAccountAndEmail(String userName, String email);
+
+        void countDown();
+    }
+
+    interface Model extends BaseMVP.BaseModel {
+
+        /**
+         * 找回密码
+         */
+        void doRequestFindPassword(String account, String email, String checkCode, OnDataCallBack callBack);
+
+        /**
+         * 发送验证码
+         */
+        void doRequestSendCheckCode(String account, String email, OnDataCallBack callBack);
+
+        /**
+         * 校验邮箱和账号
+         */
+        void doRequestCheckAccountAndEmail(String userName, String email, OnDataCallBack callBack);
+
+        void countDown(OnDataCallBack callBack);
+    }
+}

@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MVPDemo</string>
+    <string name="user_name">用户名</string>
+    <string name="user_password">密码</string>
+    <string name="login">登录</string>
+    <string name="my_resume">我的\n简历</string>
+    <string name="new_user">新用户</string>
+    <string name="find_password">找回密码</string>
+    <string name="network_interruption">网络异常</string>
+    <string name="register">注册新用户</string>
+    <string name="new_account">用户名</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="new_password">新密码</string>
+    <string name="email">邮箱</string>
+    <string name="phone">联系电话</string>
+    <string name="qq">QQ</string>
+    <string name="we_chat">微信</string>
+    <string name="submit">提交</string>
+    <string name="reset">重置</string>
+    <string name="modify_password">修改密码</string>
+
+</resources>
