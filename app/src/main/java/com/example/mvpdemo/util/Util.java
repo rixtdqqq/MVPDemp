@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.WindowManager;
 
 import com.example.mvpdemo.view.activity.LoginActivity;
 import com.example.mvpdemo.view.activity.MainActivity;
@@ -56,5 +57,16 @@ public final class Util {
         toolbar.setNavigationOnClickListener(v -> {
             activity.finish();
         });
+    }
+
+    /**
+     * 获取屏幕的宽高
+     */
+    public static int[] getDisplayScreenWH(Context context) {
+        int[] wh = new int[2];
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        wh[0] = windowManager.getDefaultDisplay().getWidth();
+        wh[1] = windowManager.getDefaultDisplay().getHeight();
+        return wh;
     }
 }

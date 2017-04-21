@@ -59,4 +59,8 @@ public final class Constant {
      * 所有权限的requestCode
      */
     public static final int GRANT_ALL = 986;
+    /**
+     * 页数大小
+     */
+    public static final int PAGE_SIZE = 10;
 }

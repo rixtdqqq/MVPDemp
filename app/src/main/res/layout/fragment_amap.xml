@@ -11,10 +11,49 @@
     </com.amap.api.maps.MapView>
 
     <LinearLayout
+        android:id="@+id/search_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_margin_10"
+        android:background="@drawable/btn_shape"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/search_position_et"
+            style="@style/TextStyle14ColorPrimary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="搜索"
+            android:imeOptions="actionSearch"
+            android:padding="@dimen/common_margin_10"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/search"
+            style="@style/TextStyle14ColorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin_10"
+            android:layout_marginRight="@dimen/common_margin_10"
+            android:padding="5dp"
+            android:text="@string/search"/>
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_margin="@dimen/common_margin_15"
+        android:layout_marginBottom="150dp"
+        android:layout_marginLeft="@dimen/common_margin_15"
+        android:layout_marginRight="@dimen/common_margin_15"
         android:background="#66ffffff"
         android:gravity="center_vertical"
         android:orientation="horizontal"
