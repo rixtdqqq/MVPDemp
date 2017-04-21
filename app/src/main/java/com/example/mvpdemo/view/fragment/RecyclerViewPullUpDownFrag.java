@@ -7,7 +7,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -18,7 +17,6 @@ import com.example.mvpdemo.base.ICityRecyclerViewContact;
 import com.example.mvpdemo.model.entity.City;
 import com.example.mvpdemo.presenter.CityPresenterImpl;
 import com.example.mvpdemo.presenter.CityRecyclerViewAdapter;
-import com.example.mvpdemo.util.Util;
 import com.example.mvpdemo.view.base.BaseFragment;
 import com.example.mvpdemo.view.base.MVPApp;
 
@@ -57,18 +55,6 @@ public class RecyclerViewPullUpDownFrag extends BaseFragment implements ICityRec
      * 当前页数
      */
     private int currentPage = 1;
-
-    @Override
-    public void showLoadingDialog() {
-
-    }
-
-    @Override
-    public void hideLoadingDialog() {
-        if (mRefreshLayout.isRefreshing()) {
-            mRefreshLayout.setRefreshing(false);
-        }
-    }
 
     @Override
     public void showToast(String message) {
@@ -140,7 +126,6 @@ public class RecyclerViewPullUpDownFrag extends BaseFragment implements ICityRec
     @Override
     public void initView(View view) {
         super.initView(view);
-        Util.initToolbar((Toolbar) view.findViewById(R.id.toolbar), mActivity);
         mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refreshLayout);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         etDistrict = (EditText) view.findViewById(R.id.district);
@@ -151,15 +136,6 @@ public class RecyclerViewPullUpDownFrag extends BaseFragment implements ICityRec
 
     @Override
     public void initListener() {
-
-    }
-
-    /**
-     * 初始化刷新控件
-     */
-    private void initRefreshView() {
-        mRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light,
-                android.R.color.holo_orange_light, android.R.color.holo_green_light);
         mRefreshLayout.setOnRefreshListener(() -> {
             // 设置可见
             mRefreshLayout.setRefreshing(true);
@@ -167,17 +143,6 @@ public class RecyclerViewPullUpDownFrag extends BaseFragment implements ICityRec
             currentPage = 1;
             mPresenter.dealCityData(PAGE_COUNT, currentPage, getCountryName(), getCountryCode(), getDistrict());
         });
-    }
-
-    /**
-     * 初始化列表
-     */
-    private void initRecyclerView() {
-        mAdapter2 = new CityRecyclerViewAdapter(data, mActivity, hasMore);
-        mLayoutManager = new LinearLayoutManager(mActivity, OrientationHelper.VERTICAL, false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(mAdapter2);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             /**
              * 当RecyclerView的滑动状态改变时触发
@@ -213,12 +178,33 @@ public class RecyclerViewPullUpDownFrag extends BaseFragment implements ICityRec
         });
     }
 
+    /**
+     * 初始化刷新控件
+     */
+    private void initRefreshView() {
+        mRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light,
+                android.R.color.holo_orange_light, android.R.color.holo_green_light);
+
+    }
+
+    /**
+     * 初始化列表
+     */
+    private void initRecyclerView() {
+        mAdapter2 = new CityRecyclerViewAdapter(data, mActivity, hasMore);
+        mLayoutManager = new LinearLayoutManager(mActivity, OrientationHelper.VERTICAL, false);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(mAdapter2);
+
+    }
+
     @Override
     protected void lazyLoad(boolean isVisible) {
-//        if (isVisible) {
-//            currentPage = 1;
-//            mPresenter.dealCityData(PAGE_COUNT, currentPage, getCountryName(), getCountryCode(), getDistrict());
-//        }
+        if (isVisible) {
+            currentPage = 1;
+            mPresenter.dealCityData(PAGE_COUNT, currentPage, getCountryName(), getCountryCode(), getDistrict());
+        }
     }
 
     @Override

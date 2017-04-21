@@ -1,8 +1,6 @@
 package com.example.mvpdemo.presenter;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;

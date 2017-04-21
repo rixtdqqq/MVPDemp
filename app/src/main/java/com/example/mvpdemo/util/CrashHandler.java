@@ -12,6 +12,8 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.mvpdemo.view.base.MVPApp;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
@@ -38,7 +40,6 @@ public class CrashHandler implements UncaughtExceptionHandler {
     private Thread.UncaughtExceptionHandler mDefaultHandler;
 
     private static CrashHandler instance = new CrashHandler();
-    private Context mContext;
 
     // 用来存储设备信息和异常信息
     private Map<String, String> infos = new HashMap<String, String>();
@@ -62,10 +63,8 @@ public class CrashHandler implements UncaughtExceptionHandler {
     /**
      * 初始化
      *
-     * @param context
      */
-    public void init(Context context) {
-        mContext = context;
+    public void init() {
         // 获取系统默认的UncaughtException处理器
         mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
         // 设置该CrashHandler为程序的默认处理器
@@ -106,13 +105,13 @@ public class CrashHandler implements UncaughtExceptionHandler {
                 @Override
                 public void run() {
                     Looper.prepare();
-                    Toast.makeText(mContext, "很抱歉,程序出现异常,即将重启.",
+                    Toast.makeText(MVPApp.getInstance(), "很抱歉,程序出现异常,即将重启.",
                             Toast.LENGTH_LONG).show();
                     Looper.loop();
                 }
             }.start();
             // 收集设备参数信息
-            collectDeviceInfo(mContext);
+            collectDeviceInfo(MVPApp.getInstance());
             // 保存日志文件
             saveCrashInfoFile(ex);
             SystemClock.sleep(3000);
@@ -198,18 +197,21 @@ public class CrashHandler implements UncaughtExceptionHandler {
         if (FileUtil.hasSDCard()) {
             String path = getGlobalpath();
             File dir = new File(path);
-            if (!dir.exists()) dir.mkdirs();
-            FileOutputStream fos = new FileOutputStream(path + fileName, true);
-            fos.write(sb.getBytes());
-            fos.flush();
-            fos.close();
+            if (!dir.exists()) dir.mkdir();
+            File file = new File(path + File.separator + fileName);
+            if (file.createNewFile()) {
+                FileOutputStream fos = new FileOutputStream(file);
+                fos.write(sb.getBytes());
+                fos.flush();
+                fos.close();
+            }
         }
         return fileName;
     }
 
     public static String getGlobalpath() {
         return Environment.getExternalStorageDirectory().getAbsolutePath()
-                + File.separator + "crash" + File.separator;
+                + File.separator + "crash";
     }
 
     public static void setTag(String tag) {

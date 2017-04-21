@@ -1,0 +1,38 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.example.mvpdemo.view.fragment.AmapFrag">
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.amap.api.maps.MapView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/common_margin_15"
+        android:background="#66ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_margin_10">
+
+        <TextView
+            style="@style/TextStyle12ColorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/position"/>
+
+        <TextView
+            android:id="@+id/position"
+            style="@style/TextStyle12ColorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text=":  深圳市龙岗区坂田街道水斗东村5巷"/>
+
+    </LinearLayout>
+
+</FrameLayout>

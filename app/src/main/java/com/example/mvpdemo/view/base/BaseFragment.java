@@ -1,5 +1,6 @@
 package com.example.mvpdemo.view.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mvpdemo.base.BaseMVP;
+import com.example.mvpdemo.util.CrashHandler;
 import com.example.mvpdemo.view.widget.LoadingDialog;
 
 /**
@@ -37,9 +39,9 @@ public abstract class BaseFragment extends Fragment implements BaseMVP.BaseView{
     protected View rootView;
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mActivity = (BaseActivity) context;
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mActivity = (BaseActivity) activity;
     }
 
     @Override
@@ -93,7 +95,9 @@ public abstract class BaseFragment extends Fragment implements BaseMVP.BaseView{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initData();
         initView(view);
+        initListener();
         if (!hasCreateView && getUserVisibleHint()) {
             lazyLoad(true);
             isFragmentVisible = true;

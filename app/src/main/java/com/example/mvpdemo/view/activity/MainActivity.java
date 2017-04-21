@@ -1,35 +1,46 @@
 package com.example.mvpdemo.view.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.TextUtils;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 
 import com.example.mvpdemo.R;
-import com.example.mvpdemo.util.Constant;
+import com.example.mvpdemo.presenter.FragPagerAdapter;
+import com.example.mvpdemo.util.Util;
 import com.example.mvpdemo.view.base.BaseActivity;
 import com.example.mvpdemo.view.base.BaseFragment;
-import com.example.mvpdemo.view.fragment.FindPasswordFrag;
+import com.example.mvpdemo.view.fragment.AmapFrag;
 import com.example.mvpdemo.view.fragment.RecyclerViewPullUpDownFrag;
-import com.example.mvpdemo.view.fragment.RegisterUserFrag;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
-    private BaseFragment mBaseFragment;
-    private String fragmentFlag = "";
+    private List<String> titles ;
+    private List<BaseFragment> mFragments;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getIntentData();
-        loadFragment();
+        titles = new ArrayList<>();
+        mFragments = new ArrayList<>();
+        titles.add("高德地图");
+        titles.add("下拉刷新上拉加载");
+        mFragments.add(AmapFrag.newInstance());
+        mFragments.add(RecyclerViewPullUpDownFrag.newInstance());
+        initView();
     }
 
-    private void getIntentData(){
-        Intent intent = getIntent();
-        if (intent.hasExtra(Constant.FRAGMENT_FLAG)) {
-            fragmentFlag = intent.getStringExtra(Constant.FRAGMENT_FLAG);
-        }
+    private void initView() {
+        Util.initToolbar((Toolbar) findViewById(R.id.toolbar), this);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        FragmentPagerAdapter adapter = new FragPagerAdapter(getSupportFragmentManager(), mFragments, titles);
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override
@@ -37,53 +48,4 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
-    private void loadFragment() {
-        if (TextUtils.equals(Constant.REGISTER_USER_FRAG, fragmentFlag)) {//注册页面
-            loadRegisterFrag();
-        } else if (TextUtils.equals(Constant.RECYCLER_VIEW_PULL_UP_DOWN_FRAG, fragmentFlag)) {//下拉刷新与上拉加载页面
-            loadRecyclerViewPullUpDownFrag();
-        } else if (TextUtils.equals(Constant.FIND_PASSWORD_FRAG, fragmentFlag)) { //找回密码页面
-            loadFindPasswordFrag();
-        }
-    }
-
-    /**
-     * 跳转到注册页面
-     */
-    private void loadRegisterFrag() {
-        if (null == mBaseFragment) {
-            mBaseFragment = RegisterUserFrag.newInstance();
-        }
-        changeFragment(mBaseFragment);
-    }
-
-    /**
-     * 跳转到下拉刷新与上拉加载页面
-     */
-    private void loadRecyclerViewPullUpDownFrag() {
-        if (null == mBaseFragment) {
-            mBaseFragment = RecyclerViewPullUpDownFrag.newInstance();
-        }
-        changeFragment(mBaseFragment);
-    }
-
-    /**
-     * 跳转到找回密码页面
-     */
-    private void loadFindPasswordFrag() {
-        if (null == mBaseFragment) {
-            mBaseFragment = FindPasswordFrag.newInstance();
-        }
-        changeFragment(mBaseFragment);
-    }
-
-    /**
-     * 加载fragment
-     */
-    private void changeFragment(BaseFragment baseFragment) {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.container, baseFragment);
-        transaction.commit();
-    }
 }

@@ -5,20 +5,6 @@
               android:orientation="vertical"
               tools:context="com.example.mvpdemo.view.fragment.RecyclerViewPullUpDownFrag">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:minHeight="?android:actionBarSize">
-
-        <TextView
-            style="@style/TextTitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="下拉刷新上拉加载"/>
-    </android.support.v7.widget.Toolbar>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,7 +34,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="3dp"
         android:background="@color/colorPrimary"/>
 
     <android.support.v4.widget.SwipeRefreshLayout

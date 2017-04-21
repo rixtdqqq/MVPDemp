@@ -17,6 +17,7 @@ import com.example.mvpdemo.presenter.LoginPresenterImpl;
 import com.example.mvpdemo.util.Constant;
 import com.example.mvpdemo.util.NetworkUtil;
 import com.example.mvpdemo.view.activity.MainActivity;
+import com.example.mvpdemo.view.activity.RegisterAndFindActivity;
 import com.example.mvpdemo.view.base.BaseFragment;
 import com.example.mvpdemo.view.base.MVPApp;
 
@@ -106,21 +107,20 @@ public class LoginFragment extends BaseFragment implements ILoginContact.ILoginV
     @Override
     public void jump2Main() {
         Intent intent = new Intent(mActivity, MainActivity.class);
-        intent.putExtra(Constant.FRAGMENT_FLAG, Constant.RECYCLER_VIEW_PULL_UP_DOWN_FRAG);
         mActivity.startActivity(intent);
         mActivity.finish();
     }
 
     @Override
     public void jump2RegisterUser() {
-        Intent intent = new Intent(mActivity, MainActivity.class);
+        Intent intent = new Intent(mActivity, RegisterAndFindActivity.class);
         intent.putExtra(Constant.FRAGMENT_FLAG, Constant.REGISTER_USER_FRAG);
         mActivity.startActivityForResult(intent, 10);
     }
 
     @Override
     public void jump2FindPassword() {
-        Intent intent = new Intent(mActivity, MainActivity.class);
+        Intent intent = new Intent(mActivity, RegisterAndFindActivity.class);
         intent.putExtra(Constant.FRAGMENT_FLAG, Constant.FIND_PASSWORD_FRAG);
         mActivity.startActivity(intent);
     }

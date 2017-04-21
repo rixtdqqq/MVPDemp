@@ -12,7 +12,6 @@ public final class FileUtil {
      * 是否有SDCard
      */
     public static boolean hasSDCard() {
-        Environment.getExternalStorageState();
         return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
     }
 }

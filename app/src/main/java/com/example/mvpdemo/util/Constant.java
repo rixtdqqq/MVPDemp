@@ -1,5 +1,7 @@
 package com.example.mvpdemo.util;
 
+import android.Manifest;
+
 /**
  * 常量类
  * Created by Administrator on 2017/3/19.
@@ -45,4 +47,16 @@ public final class Constant {
      * 账号key
      */
     public static final String ACCOUNT = "account";
+    /**
+     * 高德地图的key
+     */
+    public static final String AMAP_KEY = "d33209a0a62fc61b82e8f60b3433569a";
+    /**
+     * 权限数组
+     */
+    public static final String[] PERMISSION_ARRAY = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE};
+    /**
+     * 所有权限的requestCode
+     */
+    public static final int GRANT_ALL = 986;
 }
