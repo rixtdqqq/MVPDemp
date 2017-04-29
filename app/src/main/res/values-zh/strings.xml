@@ -8,13 +8,12 @@
     <string name="find_password">找回密码</string>
     <string name="network_interruption">网络异常</string>
     <string name="register">注册新用户</string>
-    <string name="new_account">用户名</string>
     <string name="confirm_password">确认密码</string>
     <string name="new_password">新密码</string>
     <string name="email">邮箱</string>
     <string name="phone">联系电话</string>
     <string name="qq">QQ</string>
-    <string name="we_chat">微信</string>
+    <string name="we_chat">微信</string>c
     <string name="submit">提交</string>
     <string name="reset">重置</string>
     <string name="modify_password">修改密码</string>

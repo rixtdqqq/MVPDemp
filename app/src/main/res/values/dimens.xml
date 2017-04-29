@@ -8,4 +8,6 @@
     <dimen name="common_margin_10">10dp</dimen>
     <dimen name="common_margin_15">15dp</dimen>
     <dimen name="common_margin_20">20dp</dimen>
+    <!--线宽或线高-->
+    <dimen name="common_line_wh">0.5dp</dimen>
 </resources>

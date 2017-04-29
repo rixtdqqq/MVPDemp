@@ -11,6 +11,7 @@
         android:orientation="horizontal">
 
         <EditText
+            style="@style/TextStyle14ColorPrimary"
             android:id="@+id/country_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -18,6 +19,7 @@
             android:hint="国家名"/>
 
         <EditText
+            style="@style/TextStyle14ColorPrimary"
             android:id="@+id/country_code"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -25,17 +27,13 @@
             android:hint="国家编码"/>
 
         <EditText
+            style="@style/TextStyle14ColorPrimary"
             android:id="@+id/district"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="地区"/>
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@color/colorPrimary"/>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refreshLayout"
