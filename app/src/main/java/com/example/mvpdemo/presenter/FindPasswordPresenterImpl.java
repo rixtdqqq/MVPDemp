@@ -24,9 +24,9 @@ public class FindPasswordPresenterImpl implements IFindPasswordContact.Presenter
     }
 
     @Override
-    public void submit(String account, String email, String checkCode) {
+    public void submit() {
         mView.showLoadingDialog();
-        mModel.doRequestFindPassword(account, email, checkCode, new OnDataCallBack() {
+        mModel.doRequestFindPassword(mView.getAccount(), mView.getEmail(), mView.getCheckCode(), new OnDataCallBack() {
             @Override
             public void onSuccess(Object result) {
                 mView.hideLoadingDialog();
@@ -43,6 +43,7 @@ public class FindPasswordPresenterImpl implements IFindPasswordContact.Presenter
 
             @Override
             public void onFail(String errorMsg) {
+                mView.hideLoadingDialog();
                 mView.showToast(errorMsg);
             }
 
@@ -50,9 +51,9 @@ public class FindPasswordPresenterImpl implements IFindPasswordContact.Presenter
     }
 
     @Override
-    public void sendCheckCode(String account, String email) {
+    public void sendCheckCode() {
         mView.showLoadingDialog();
-        mModel.doRequestSendCheckCode(account, email, new OnDataCallBack() {
+        mModel.doRequestSendCheckCode(mView.getAccount(), mView.getEmail(), new OnDataCallBack() {
             @Override
             public void onSuccess(Object result) {
                 mView.hideLoadingDialog();
@@ -64,15 +65,16 @@ public class FindPasswordPresenterImpl implements IFindPasswordContact.Presenter
 
             @Override
             public void onFail(String errorMsg) {
+                mView.hideLoadingDialog();
                 mView.showToast(errorMsg);
             }
         });
     }
 
     @Override
-    public void checkAccountAndEmail(String userName, String email) {
+    public void checkAccountAndEmail() {
         mView.showLoadingDialog();
-        mModel.doRequestCheckAccountAndEmail(userName, email, new OnDataCallBack() {
+        mModel.doRequestCheckAccountAndEmail(mView.getAccount(), mView.getEmail(), new OnDataCallBack() {
             @Override
             public void onSuccess(Object result) {
                 mView.hideLoadingDialog();
@@ -91,6 +93,7 @@ public class FindPasswordPresenterImpl implements IFindPasswordContact.Presenter
 
             @Override
             public void onFail(String errorMsg) {
+                mView.hideLoadingDialog();
                 mView.showToast(errorMsg);
             }
         });
@@ -111,6 +114,7 @@ public class FindPasswordPresenterImpl implements IFindPasswordContact.Presenter
 
             @Override
             public void onFail(String errorMsg) {
+                mView.hideLoadingDialog();
                 mView.showToast(errorMsg);
             }
         });
@@ -119,6 +123,6 @@ public class FindPasswordPresenterImpl implements IFindPasswordContact.Presenter
     @Override
     public void start() {
         //首页校验邮箱和账号--->验证通过就发送验证码到邮箱 ---> 填写验证码后服务成功进入修改密码界面（共3个服务）
-        checkAccountAndEmail(mView.getAccount(), mView.getEmail());
+        checkAccountAndEmail();
     }
 }

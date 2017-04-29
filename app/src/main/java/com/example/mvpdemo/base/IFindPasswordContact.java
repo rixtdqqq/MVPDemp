@@ -22,19 +22,25 @@ public interface IFindPasswordContact {
          */
         void sendCheckCode();
 
+        /**
+         * 倒数按钮不可用
+         */
         void countDownDisable(String data);
 
+        /**
+         * 倒数按钮可用
+         */
         void countDownEnable(String data);
 
         void jump2ModifyPassword();
     }
 
     interface Presenter extends BaseMVP.BasePresenter {
-        void submit(String account, String email, String checkCode);
+        void submit();
 
-        void sendCheckCode(String account, String email);
+        void sendCheckCode();
 
-        void checkAccountAndEmail(String userName, String email);
+        void checkAccountAndEmail();
 
         void countDown();
     }
@@ -56,6 +62,9 @@ public interface IFindPasswordContact {
          */
         void doRequestCheckAccountAndEmail(String userName, String email, OnDataCallBack callBack);
 
+        /**
+         * 倒数按钮的读秒
+         */
         void countDown(OnDataCallBack callBack);
     }
 }

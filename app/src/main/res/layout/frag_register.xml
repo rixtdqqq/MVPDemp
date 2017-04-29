@@ -37,6 +37,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingBottom="@dimen/common_margin_10"
+            android:paddingTop="@dimen/common_margin_10"
             android:text="@string/new_user"/>
 
         <EditText
@@ -45,10 +47,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:maxLines="1"
+            android:background="@null"
+            android:hint="请输入用户名 (必填)"
             android:imeOptions="actionNext"
             android:maxLength="20"
-            android:hint="请输入用户名 (必填)"/>
+            android:maxLines="1"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -70,6 +73,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingBottom="@dimen/common_margin_10"
+            android:paddingTop="@dimen/common_margin_10"
             android:text="@string/user_password"/>
 
         <EditText
@@ -78,11 +83,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:maxLength="16"
+            android:background="@null"
+            android:hint="请输入密码 (必填)"
             android:imeOptions="actionNext"
             android:inputType="textPassword"
-            android:maxLines="1"
-            android:hint="请输入密码 (必填)"/>
+            android:maxLength="16"
+            android:maxLines="1"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -104,6 +110,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingBottom="@dimen/common_margin_10"
+            android:paddingTop="@dimen/common_margin_10"
             android:text="@string/confirm_password"/>
 
         <EditText
@@ -112,11 +120,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
+            android:background="@null"
+            android:hint="再次确认密码 (必填)"
+            android:imeOptions="actionNext"
             android:inputType="textPassword"
             android:maxLength="16"
-            android:imeOptions="actionNext"
-            android:maxLines="1"
-            android:hint="再次确认密码 (必填)"/>
+            android:maxLines="1"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -138,6 +147,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingBottom="@dimen/common_margin_10"
+            android:paddingTop="@dimen/common_margin_10"
             android:text="@string/email"/>
 
         <EditText
@@ -146,10 +157,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:inputType="textEmailAddress"
+            android:background="@null"
+            android:hint="请输入您的Email (必填)"
             android:imeOptions="actionNext"
-            android:singleLine="true"
-            android:hint="请输入您的Email (必填)"/>
+            android:inputType="textEmailAddress"
+            android:singleLine="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -171,6 +183,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingBottom="@dimen/common_margin_10"
+            android:paddingTop="@dimen/common_margin_10"
             android:text="@string/phone"/>
 
         <EditText
@@ -179,9 +193,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
+            android:background="@null"
+            android:hint="请输入您的Phone (必填)"
             android:imeOptions="actionNext"
-            android:inputType="phone"
-            android:hint="请输入您的Phone (必填)"/>
+            android:inputType="phone"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -203,17 +218,20 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingBottom="@dimen/common_margin_10"
+            android:paddingTop="@dimen/common_margin_10"
             android:text="@string/qq"/>
 
         <EditText
             android:id="@+id/user_qq"
-            android:inputType="number"
             style="@style/TextStyle14ColorPrimary"
             android:layout_width="0dp"
-            android:imeOptions="actionNext"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:hint="请输入您的QQ (选填)"/>
+            android:background="@null"
+            android:hint="请输入您的QQ (选填)"
+            android:imeOptions="actionNext"
+            android:inputType="number"/>
     </LinearLayout>
 
     <LinearLayout
@@ -229,6 +247,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingBottom="@dimen/common_margin_10"
+            android:paddingTop="@dimen/common_margin_10"
             android:text="@string/we_chat"/>
 
         <EditText
@@ -236,16 +256,17 @@
             style="@style/TextStyle14ColorPrimary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:imeOptions="actionGo"
             android:layout_weight="4"
-            android:hint="请输入您的weChat (选填)"/>
+            android:background="@null"
+            android:hint="请输入您的weChat (选填)"
+            android:imeOptions="actionGo"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="50dp"
+        android:orientation="horizontal"
         android:paddingLeft="@dimen/common_margin_15"
         android:paddingRight="@dimen/common_margin_15">
 

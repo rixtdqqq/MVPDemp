@@ -31,6 +31,7 @@ public class CityPresenterImpl implements ICityRecyclerViewContact.Presenter {
         mModel.doRequestCity(pageSize, pageNum, countryName, countryCode, district, new OnDataCallBack() {
             @Override
             public void onSuccess(Object result) {
+                mView.hideLoadingDialog();
                 List<City> cities = parseCityData(result, pageSize);
                 if (null != cities && !cities.isEmpty()) {
                     mView.showCityListView(cities, hasMore);

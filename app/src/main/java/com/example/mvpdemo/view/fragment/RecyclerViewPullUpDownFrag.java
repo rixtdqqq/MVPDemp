@@ -202,6 +202,7 @@ public class RecyclerViewPullUpDownFrag extends BaseFragment implements ICityRec
     @Override
     protected void lazyLoad(boolean isVisible) {
         if (isVisible) {
+            showLoadingDialog();
             currentPage = 1;
             mPresenter.dealCityData(PAGE_COUNT, currentPage, getCountryName(), getCountryCode(), getDistrict());
         }

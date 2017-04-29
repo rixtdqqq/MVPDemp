@@ -29,6 +29,7 @@ public class FindPasswordFrag extends BaseFragment implements IFindPasswordConta
     private IFindPasswordContact.Presenter mPresenter;
     private EditText etAccount, etEmail, etCheckCode;
     private TextView btnSubmit, btnSendCheckCode;
+
     public FindPasswordFrag() {
         // Required empty public constructor
     }
@@ -54,8 +55,6 @@ public class FindPasswordFrag extends BaseFragment implements IFindPasswordConta
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initData();
-        initListener();
     }
 
     @Override
@@ -88,7 +87,7 @@ public class FindPasswordFrag extends BaseFragment implements IFindPasswordConta
     /**
      * 验证码不能为空
      */
-    private boolean checkCodeNotNull(){
+    private boolean checkCodeNotNull() {
         return !TextUtils.isEmpty(getCheckCode());
     }
 
@@ -96,7 +95,7 @@ public class FindPasswordFrag extends BaseFragment implements IFindPasswordConta
     public void submit() {
         if (NetworkUtil.isNetworkAvailable(mActivity)) {
             if (canSubmit() && checkCodeNotNull()) {
-                mPresenter.submit(getAccount(), getEmail(),getCheckCode());
+                mPresenter.submit();
             } else {
                 showToast("请您正确填写资料以便找回密码！");
             }
@@ -148,7 +147,7 @@ public class FindPasswordFrag extends BaseFragment implements IFindPasswordConta
     public void sendCheckCode() {
         if (NetworkUtil.isNetworkAvailable(mActivity)) {
             if (canSubmit()) {
-                mPresenter.sendCheckCode(getAccount(), getEmail());
+                mPresenter.sendCheckCode();
             } else {
                 showToast("请您填写资料以便找回密码！");
             }

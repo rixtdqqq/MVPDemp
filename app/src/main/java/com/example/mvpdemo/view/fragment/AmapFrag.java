@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -16,6 +17,9 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.services.core.PoiItem;
+import com.amap.api.services.help.Inputtips;
+import com.amap.api.services.help.InputtipsQuery;
+import com.amap.api.services.help.Tip;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
 import com.example.mvpdemo.R;
@@ -24,18 +28,22 @@ import com.example.mvpdemo.util.Constant;
 import com.example.mvpdemo.util.Util;
 import com.example.mvpdemo.view.base.BaseFragment;
 
+import java.util.List;
+
 /**
  * 高德地图
  */
-public class AmapFrag extends BaseFragment implements IMapContact.View ,PoiSearch.OnPoiSearchListener {
+public class AmapFrag extends BaseFragment implements IMapContact.View, PoiSearch.OnPoiSearchListener, Inputtips.InputtipsListener {
 
     private MapView mMapView;
     private AMap mAMap;
-    private TextView tvPosition,tvSearch;
+    private TextView tvPosition, tvSearch;
     private EditText etSearchAddition;
+    private LinearLayout llSearchAddition;
     private PopupWindow mPopupWindow;
     private PoiSearch.Query mQuery;
     private PoiSearch mPoiSearch;
+    private InputtipsQuery mInPutTipsQuery;
     private int currentPage = 1;
 
     public AmapFrag() {
@@ -87,6 +95,7 @@ public class AmapFrag extends BaseFragment implements IMapContact.View ,PoiSearc
         tvPosition = (TextView) view.findViewById(R.id.position);
         tvSearch = (TextView) view.findViewById(R.id.search);
         etSearchAddition = (EditText) view.findViewById(R.id.search_position_et);
+        llSearchAddition = (LinearLayout) view.findViewById(R.id.search_ll);
     }
 
     @Override
@@ -198,7 +207,7 @@ public class AmapFrag extends BaseFragment implements IMapContact.View ,PoiSearc
                 }
             });
             tvSearch.setOnClickListener(v -> {
-
+                llSearchAddition.setVisibility(View.VISIBLE);
                 if (mPopupWindow.isShowing()) {
                     mPopupWindow.dismiss();
                 }
@@ -218,11 +227,16 @@ public class AmapFrag extends BaseFragment implements IMapContact.View ,PoiSearc
 
     @Override
     public void onPoiSearched(PoiResult poiResult, int i) {
-
+        poiResult.getPois();
     }
 
     @Override
     public void onPoiItemSearched(PoiItem poiItem, int i) {
+
+    }
+
+    @Override
+    public void onGetInputtips(List<Tip> list, int i) {
 
     }
 }
