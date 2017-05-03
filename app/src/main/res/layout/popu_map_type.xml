@@ -52,6 +52,10 @@
         android:gravity="center"
         android:padding="5dp"
         android:text="卫星地图"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"/>
     <TextView
         android:id="@+id/search_map_tv"
         style="@style/TextStyle14ColorPrimary"

@@ -6,7 +6,7 @@
     <string name="my_resume">My\nResume</string>
 
     <string name="new_user">Account</string>
-    <string name="find_password">Forgot Password</string>
+    <string name="find_password">Forget Password</string>
     <string name="network_interruption">Network Interruption</string>
     <string name="register">Register</string>
     <string name="confirm_password">Confirm</string>
@@ -22,5 +22,8 @@
     <string name="position">Position</string>
     <string name="home">Home</string>
     <string name="search">Search</string>
+    <string name="check_code">Code</string>
+    <string name="send_check_code">Send</string>
+    <string name="next">Next</string>
 
 </resources>

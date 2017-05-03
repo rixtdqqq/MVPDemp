@@ -28,6 +28,7 @@ import com.example.mvpdemo.util.Constant;
 import com.example.mvpdemo.util.Util;
 import com.example.mvpdemo.view.base.BaseFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -109,6 +110,8 @@ public class AmapFrag extends BaseFragment implements IMapContact.View, PoiSearc
             showMapTypeDialog(v);
         });
         tvSearch.setOnClickListener(v -> {
+            hideSearchView();
+            Util.hideSoftKeyBoard(etSearchAddition);
             if (null == mQuery) {
                 mQuery = new PoiSearch.Query(getSearchAddition(), "");
                 mQuery.setPageSize(Constant.PAGE_SIZE);
@@ -151,6 +154,7 @@ public class AmapFrag extends BaseFragment implements IMapContact.View, PoiSearc
 
     @Override
     public void showMapTypeDialog(View refer) {
+        hideSearchView();
         if (null == mPopupWindow) {
             View view = LayoutInflater.from(mActivity).inflate(R.layout.popu_map_type, null);
             mPopupWindow = new PopupWindow(view, Util.getDisplayScreenWH(mActivity)[0] / 2, ViewGroup.LayoutParams.WRAP_CONTENT, true);
@@ -207,7 +211,7 @@ public class AmapFrag extends BaseFragment implements IMapContact.View, PoiSearc
                 }
             });
             tvSearch.setOnClickListener(v -> {
-                llSearchAddition.setVisibility(View.VISIBLE);
+                showSearchView();
                 if (mPopupWindow.isShowing()) {
                     mPopupWindow.dismiss();
                 }
@@ -226,8 +230,24 @@ public class AmapFrag extends BaseFragment implements IMapContact.View, PoiSearc
     }
 
     @Override
+    public void hideSearchView() {
+        if (View.VISIBLE == llSearchAddition.getVisibility()) {
+            llSearchAddition.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void showSearchView() {
+        if (View.GONE == llSearchAddition.getVisibility()) {
+            Util.showSoftKeyBoard(etSearchAddition);
+            llSearchAddition.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
     public void onPoiSearched(PoiResult poiResult, int i) {
-        poiResult.getPois();
+        ArrayList<PoiItem> pois = poiResult.getPois();
+
     }
 
     @Override

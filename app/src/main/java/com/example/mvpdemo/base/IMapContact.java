@@ -17,6 +17,15 @@ public interface IMapContact {
          */
         String getSearchAddition();
 
+        /**
+         * 隐藏搜索控件
+         */
+        void hideSearchView();
+        /**
+         * 显示搜索控件
+         */
+        void showSearchView();
+
     }
 
     interface Presenter extends BaseMVP.BasePresenter {

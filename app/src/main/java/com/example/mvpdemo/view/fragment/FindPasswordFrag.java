@@ -3,7 +3,6 @@ package com.example.mvpdemo.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
@@ -50,11 +49,6 @@ public class FindPasswordFrag extends BaseFragment implements IFindPasswordConta
     @Override
     protected int getLayoutId() {
         return R.layout.frag_find_password;
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override
@@ -118,6 +112,7 @@ public class FindPasswordFrag extends BaseFragment implements IFindPasswordConta
         etEmail = (EditText) view.findViewById(R.id.user_email);
         btnSendCheckCode = (TextView) view.findViewById(R.id.send_check_code);
         btnSubmit = (TextView) view.findViewById(R.id.submit);
+        Util.showSoftKeyBoard(etAccount);
     }
 
     @Override

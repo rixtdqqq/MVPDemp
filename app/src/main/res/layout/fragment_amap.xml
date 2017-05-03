@@ -33,7 +33,7 @@
             android:padding="@dimen/common_margin_10"/>
 
         <View
-            android:layout_width="1dp"
+            android:layout_width="@dimen/common_line_wh"
             android:layout_height="30dp"
             android:background="@color/colorPrimary"/>
 
@@ -53,10 +53,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="110dp"
         android:layout_marginLeft="@dimen/common_margin_15"
         android:layout_marginRight="@dimen/common_margin_15"
-        android:background="#66ffffff"
+        android:background="#77ffffff"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="@dimen/common_margin_10">

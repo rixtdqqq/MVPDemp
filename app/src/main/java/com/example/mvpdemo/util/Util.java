@@ -6,11 +6,16 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import com.example.mvpdemo.view.activity.LoginActivity;
 import com.example.mvpdemo.view.activity.MainActivity;
 import com.example.mvpdemo.view.base.BaseActivity;
 import com.example.mvpdemo.view.base.BaseFragment;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 工具类
@@ -69,4 +74,33 @@ public final class Util {
         wh[1] = windowManager.getDefaultDisplay().getHeight();
         return wh;
     }
+
+    /**
+     * 对于刚跳到一个新的界面就要弹出软键盘的情况上述代码可能由于界面未加载完全而无法弹出软键盘。此时应该适当的延迟弹出软键盘如500毫秒（保证界面的数据加载完成）
+     */
+    public static void showSoftKeyBoard(EditText editText) {
+        editText.setFocusableInTouchMode(true);
+        editText.requestFocus();
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+                           @Override
+                           public void run() {
+                               InputMethodManager inputManager =
+                                       (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                               inputManager.showSoftInput(editText, 0);
+                           }
+
+                       },
+                500);
+    }
+
+    /**
+     * 对于刚跳到一个新的界面就要弹出软键盘的情况上述代码可能由于界面未加载完全而无法弹出软键盘。此时应该适当的延迟弹出软键盘如500毫秒（保证界面的数据加载完成）
+     */
+    public static void hideSoftKeyBoard(EditText editText) {
+        InputMethodManager inputManager =
+                (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+    }
+
 }

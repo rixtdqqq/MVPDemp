@@ -55,9 +55,9 @@ public final class RequestService {
                             .addInterceptor(addHeaderInterceptor()) // token过滤
                             .addInterceptor(httpLoggingInterceptor)//日志,所有的请求响应都看到
                             .cache(cache) //添加缓存
-                            .connectTimeout(10, TimeUnit.SECONDS)
-                            .readTimeout(600, TimeUnit.MILLISECONDS)
-                            .writeTimeout(600, TimeUnit.MILLISECONDS)
+                            .connectTimeout(6, TimeUnit.SECONDS)
+                            .readTimeout(6, TimeUnit.SECONDS)
+                            .writeTimeout(6, TimeUnit.SECONDS)
                             .build();
 
                     retrofit = new Retrofit.Builder()

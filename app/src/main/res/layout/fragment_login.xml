@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             tools:text="zhu"/>
 
     </android.support.design.widget.TextInputLayout>
@@ -105,5 +105,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom|center_horizontal"
-        android:text="版权所有zhuyingxin(2017)"/>
+        android:text="Copyright(2017) zhuyingxin"/>
 </LinearLayout>

@@ -16,6 +16,7 @@ import com.example.mvpdemo.base.ILoginContact;
 import com.example.mvpdemo.presenter.LoginPresenterImpl;
 import com.example.mvpdemo.util.Constant;
 import com.example.mvpdemo.util.NetworkUtil;
+import com.example.mvpdemo.util.Util;
 import com.example.mvpdemo.view.activity.MainActivity;
 import com.example.mvpdemo.view.activity.RegisterAndFindActivity;
 import com.example.mvpdemo.view.base.BaseFragment;
@@ -65,6 +66,7 @@ public class LoginFragment extends BaseFragment implements ILoginContact.ILoginV
         etPassword = (TextInputEditText) view.findViewById(R.id.user_pwd);
         btnFindPassword = (TextView) view.findViewById(R.id.find_password);
         btnRegisterUser = (TextView) view.findViewById(R.id.new_user);
+        Util.showSoftKeyBoard(etUserName);
     }
 
     @Override
