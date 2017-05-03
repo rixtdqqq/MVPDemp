@@ -74,7 +74,7 @@ public class FindPasswordPresenterImpl implements IFindPasswordContact.Presenter
     @Override
     public void checkAccountAndEmail() {
         mView.showLoadingDialog();
-        mModel.doRequestCheckAccountAndEmail(mView.getAccount(), mView.getEmail(), new OnDataCallBack() {
+        mModel.doRequestCheckAccountAndEmail(mView.getAccount(), mView.getEmail(), mView.getCheckCode(),new OnDataCallBack() {
             @Override
             public void onSuccess(Object result) {
                 mView.hideLoadingDialog();
@@ -83,9 +83,13 @@ public class FindPasswordPresenterImpl implements IFindPasswordContact.Presenter
                 String message = data.getMessage();
                 int status = data.getStatus();
                 if (1 == status) {
-                    countDown();
-                    mView.showToast("已发送");
-                    mView.sendCheckCode();
+                    if (TextUtils.isEmpty(mView.getCheckCode())) {
+                        countDown();
+                        mView.showToast("已发送");
+                        mView.sendCheckCode();
+                    } else {
+                        mView.jump2ModifyPassword();
+                    }
                 } else {
                     mView.showToast(message);
                 }

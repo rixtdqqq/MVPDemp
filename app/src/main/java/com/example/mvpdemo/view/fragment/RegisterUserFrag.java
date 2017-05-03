@@ -19,6 +19,7 @@ import com.example.mvpdemo.view.base.MVPApp;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * 注册界面
@@ -97,6 +98,12 @@ public class RegisterUserFrag extends BaseFragment implements IRegisterContact.V
     }
 
     @Override
+    public String getCreateTime() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINESE);
+        return format.format(new Date());
+    }
+
+    @Override
     public void reset() {
         etEmail.setText("");
         etQQ.setText("");
@@ -130,18 +137,17 @@ public class RegisterUserFrag extends BaseFragment implements IRegisterContact.V
         etPhone = (EditText) view.findViewById(R.id.user_phone);
         btnSubmit = (TextView) view.findViewById(R.id.submit);
         btnReset = (TextView) view.findViewById(R.id.reset);
+        Util.showSoftKeyBoard(etUserName);
     }
 
     @Override
     public void initListener() {
         btnReset.setOnClickListener(v -> {
-            reset();
+            mPresenter.reset();
         });
         btnSubmit.setOnClickListener(v -> {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String date = format.format(new Date());
             if (canSubmit()) {
-                mPresenter.submit(getUserName(), getUserPassword(), date, getUserQQ(), getUserWeChat(), getUserPhone(), getUserEmail());
+                mPresenter.start();
             } else {
                 showToast("请将资料补全再提交");
             }

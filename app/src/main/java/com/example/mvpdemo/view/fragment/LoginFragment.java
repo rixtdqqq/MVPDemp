@@ -1,7 +1,6 @@
 package com.example.mvpdemo.view.fragment;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -117,7 +116,7 @@ public class LoginFragment extends BaseFragment implements ILoginContact.ILoginV
     public void jump2RegisterUser() {
         Intent intent = new Intent(mActivity, RegisterAndFindActivity.class);
         intent.putExtra(Constant.FRAGMENT_FLAG, Constant.REGISTER_USER_FRAG);
-        mActivity.startActivityForResult(intent, 10);
+        mActivity.startActivity(intent);
     }
 
     @Override
@@ -152,19 +151,8 @@ public class LoginFragment extends BaseFragment implements ILoginContact.ILoginV
                 showToast("请输入用户名或密码");
             }
         } else {
-            showToast("网络异常");
+            showToast(getString(R.string.network_interruption));
         }
 
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (10 == requestCode && Activity.RESULT_OK == resultCode) {
-            String userName = data.getStringExtra(Constant.ACCOUNT);
-            if (!TextUtils.isEmpty(userName)) {
-                etUserName.setText(userName);
-            }
-        }
     }
 }

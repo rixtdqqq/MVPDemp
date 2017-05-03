@@ -58,9 +58,9 @@ public interface IFindPasswordContact {
         void doRequestSendCheckCode(String account, String email, OnDataCallBack callBack);
 
         /**
-         * 校验邮箱和账号
+         * 校验邮箱和账号、验证码
          */
-        void doRequestCheckAccountAndEmail(String userName, String email, OnDataCallBack callBack);
+        void doRequestCheckAccountAndEmail(String userName, String email, String checkCode, OnDataCallBack callBack);
 
         /**
          * 倒数按钮的读秒

@@ -102,12 +102,13 @@ public interface HttpService {
                                                               @Field("email") String email,
                                                               @Field("checkCode") String checkCode);
     /**
-     * 校验账号和邮箱
+     * 校验账号和邮箱、验证码
      */
     @FormUrlEncoded
     @POST("CheckAccountAndEmailServlet")
     Observable<ResponseResult2<ResponseMessage>> checkAccountAndEmail(@Field("userName") String userName,
-                                                              @Field("email") String email);
+                                                              @Field("email") String email,
+                                                                      @Field("checkCode") String checkCode);
 
     /**
      * 登录

@@ -22,26 +22,26 @@ public class RegisterUserPresenterImpl implements IRegisterContact.Presenter {
     }
 
     @Override
-    public void submit(String userName, String password, String createTime,
-                       String qq, String weChat, String phone, String email) {
+    public void submit() {
         mView.showLoadingDialog();
-        mModel.doRequestRegisterUser(userName, password, createTime, qq, weChat, phone, email, new OnDataCallBack() {
-            @Override
-            public void onSuccess(Object result) {
-                ResponseResult2<ResponseMessage> data = (ResponseResult2<ResponseMessage>) result;
-                ResponseMessage responseMessage = data.getData();
-                String message = responseMessage.getMessage();
-                if (1 == responseMessage.getStatus()) {
-                    mView.back();
-                }
-                mView.showToast(message);
-            }
+        mModel.doRequestRegisterUser(mView.getUserName(), mView.getUserPassword(), mView.getCreateTime(),
+                mView.getUserQQ(), mView.getUserWeChat(), mView.getUserPhone(), mView.getUserEmail(), new OnDataCallBack() {
+                    @Override
+                    public void onSuccess(Object result) {
+                        ResponseResult2<ResponseMessage> data = (ResponseResult2<ResponseMessage>) result;
+                        ResponseMessage responseMessage = data.getData();
+                        String message = responseMessage.getMessage();
+                        if (1 == responseMessage.getStatus()) {
+                            mView.back();
+                        }
+                        mView.showToast(message);
+                    }
 
-            @Override
-            public void onFail(String errorMsg) {
-            }
+                    @Override
+                    public void onFail(String errorMsg) {
+                    }
 
-        });
+                });
     }
 
     @Override
@@ -51,6 +51,6 @@ public class RegisterUserPresenterImpl implements IRegisterContact.Presenter {
 
     @Override
     public void start() {
-
+        submit();
     }
 }

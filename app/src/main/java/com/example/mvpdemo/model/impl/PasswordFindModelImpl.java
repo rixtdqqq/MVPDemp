@@ -50,8 +50,8 @@ public class PasswordFindModelImpl implements IFindPasswordContact.Model {
     }
 
     @Override
-    public void doRequestCheckAccountAndEmail(String userName, String email, OnDataCallBack callBack) {
-        RequestService.getHttpService(true).checkAccountAndEmail(userName, email)
+    public void doRequestCheckAccountAndEmail(String userName, String email, String checkCode,OnDataCallBack callBack) {
+        RequestService.getHttpService(true).checkAccountAndEmail(userName, email,checkCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ResponseResult2<ResponseMessage>>() {

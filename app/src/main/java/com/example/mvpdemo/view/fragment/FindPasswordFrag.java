@@ -63,7 +63,8 @@ public class FindPasswordFrag extends BaseFragment implements IFindPasswordConta
 
     @Override
     public String getCheckCode() {
-        return etCheckCode.getText().toString().trim();
+        String s = etCheckCode.getText().toString();
+        return TextUtils.isEmpty(s) ? "" : s.trim();
     }
 
     @Override
@@ -89,7 +90,7 @@ public class FindPasswordFrag extends BaseFragment implements IFindPasswordConta
     public void submit() {
         if (NetworkUtil.isNetworkAvailable(mActivity)) {
             if (canSubmit() && checkCodeNotNull()) {
-                mPresenter.submit();
+                mPresenter.start();
             } else {
                 showToast("请您正确填写资料以便找回密码！");
             }
@@ -161,7 +162,7 @@ public class FindPasswordFrag extends BaseFragment implements IFindPasswordConta
     @Override
     public void countDownEnable(String data) {
         btnSendCheckCode.setEnabled(true);
-        btnSendCheckCode.setText("发送验证码");
+        btnSendCheckCode.setText(getString(R.string.send_check_code));
         btnSendCheckCode.setTextColor(mActivity.getResources().getColor(R.color.colorPrimary));
     }
 

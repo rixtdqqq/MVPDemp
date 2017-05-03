@@ -23,5 +23,6 @@
     <string name="check_code">验证码</string>
     <string name="send_check_code">发送验证码</string>
     <string name="next">下一步</string>
+    <string name="must">*</string>
 
 </resources>

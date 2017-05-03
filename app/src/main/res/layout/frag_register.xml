@@ -38,8 +38,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingBottom="@dimen/common_margin_10"
-            android:paddingTop="@dimen/common_margin_10"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:text="@string/new_user"/>
 
         <EditText
@@ -52,12 +52,14 @@
             android:hint="请输入用户名 (必填)"
             android:imeOptions="actionNext"
             android:maxLength="20"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:singleLine="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="*"
+            android:text="@string/must"
             android:textColor="@color/colorAccent"/>
     </LinearLayout>
 
@@ -75,8 +77,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingBottom="@dimen/common_margin_10"
-            android:paddingTop="@dimen/common_margin_10"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:text="@string/user_password"/>
 
         <EditText
@@ -90,12 +92,14 @@
             android:imeOptions="actionNext"
             android:inputType="textPassword"
             android:maxLength="16"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:singleLine="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="*"
+            android:text="@string/must"
             android:textColor="@color/colorAccent"/>
     </LinearLayout>
 
@@ -109,12 +113,13 @@
         android:paddingRight="@dimen/common_margin_15">
 
         <TextView
+            android:id="@+id/textView4"
             style="@style/TextStyle14ColorPrimary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingBottom="@dimen/common_margin_10"
-            android:paddingTop="@dimen/common_margin_10"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:text="@string/confirm_password"/>
 
         <EditText
@@ -128,12 +133,14 @@
             android:imeOptions="actionNext"
             android:inputType="textPassword"
             android:maxLength="16"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:singleLine="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="*"
+            android:text="@string/must"
             android:textColor="@color/colorAccent"/>
     </LinearLayout>
 
@@ -151,8 +158,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingBottom="@dimen/common_margin_10"
-            android:paddingTop="@dimen/common_margin_10"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:text="@string/email"/>
 
         <EditText
@@ -165,12 +172,14 @@
             android:hint="请输入您的Email (必填)"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:singleLine="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="*"
+            android:text="@string/must"
             android:textColor="@color/colorAccent"/>
     </LinearLayout>
 
@@ -188,8 +197,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingBottom="@dimen/common_margin_10"
-            android:paddingTop="@dimen/common_margin_10"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:text="@string/phone"/>
 
         <EditText
@@ -202,12 +211,14 @@
             android:hint="请输入您的Phone (必填)"
             android:imeOptions="actionNext"
             android:inputType="phone"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:singleLine="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="*"
+            android:text="@string/must"
             android:textColor="@color/colorAccent"/>
     </LinearLayout>
 
@@ -225,8 +236,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingBottom="@dimen/common_margin_10"
-            android:paddingTop="@dimen/common_margin_10"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:text="@string/qq"/>
 
         <EditText
@@ -239,6 +250,8 @@
             android:hint="请输入您的QQ (选填)"
             android:imeOptions="actionNext"
             android:inputType="number"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:singleLine="true"/>
     </LinearLayout>
 
@@ -256,8 +269,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingBottom="@dimen/common_margin_10"
-            android:paddingTop="@dimen/common_margin_10"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:text="@string/we_chat"/>
 
         <EditText
@@ -269,6 +282,8 @@
             android:background="@null"
             android:hint="请输入您的WeChat (选填)"
             android:imeOptions="actionGo"
+            android:paddingBottom="@dimen/common_margin_15"
+            android:paddingTop="@dimen/common_margin_15"
             android:singleLine="true"/>
     </LinearLayout>
 

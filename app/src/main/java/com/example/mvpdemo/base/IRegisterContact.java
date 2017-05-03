@@ -21,6 +21,8 @@ public interface IRegisterContact {
 
         String getUserWeChat();
 
+        String getCreateTime();
+
         void reset();
 
         void back();
@@ -29,9 +31,14 @@ public interface IRegisterContact {
     }
 
     interface Presenter extends BaseMVP.BasePresenter {
-        void submit(String userName, String password, String createTime,
-                    String qq, String weChat, String phone, String email);
+        /**
+         * 提交注册
+         */
+        void submit();
 
+        /**
+         * 重置
+         */
         void reset();
     }
 

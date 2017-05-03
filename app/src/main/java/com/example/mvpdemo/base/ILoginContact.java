@@ -50,6 +50,6 @@ public interface ILoginContact {
         /**
          * 登录：登录页面只有一个业务操作，登录需要用户名和密码两个参数
          */
-        void login(String userName, String password);
+        void login();
     }
 }

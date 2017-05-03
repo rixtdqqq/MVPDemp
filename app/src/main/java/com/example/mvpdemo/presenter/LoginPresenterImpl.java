@@ -21,9 +21,9 @@ public class LoginPresenterImpl implements ILoginContact.ILoginPresenter {
     }
 
     @Override
-    public void login(String userName, String password) {
+    public void login() {
         mLoginView.showLoadingDialog();
-        mLoginModel.doRequestLogin(userName, password, new OnDataCallBack() {
+        mLoginModel.doRequestLogin(mLoginView.getUserName(), mLoginView.getUserPassword(), new OnDataCallBack() {
             @Override
             public void onSuccess(Object result) {
                 ResponseResult2<ResponseMessage> responseMessage = (ResponseResult2<ResponseMessage>) result;
@@ -47,6 +47,6 @@ public class LoginPresenterImpl implements ILoginContact.ILoginPresenter {
 
     @Override
     public void start() {
-        login(mLoginView.getUserName(),mLoginView.getUserPassword());
+        login();
     }
 }
