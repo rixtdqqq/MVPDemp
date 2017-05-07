@@ -11,14 +11,77 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true //突破应用方法数65535的限制
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]//设置默认渠道号
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    //    自定义签名文件配置 在主module下的buildTypes{}中使用使用了signingConfig signingConfigs.release时此配置需要放在buildTypes的前面
+    signingConfigs {
+        debug {}
+        release {
+            storeFile file("mvpdemo.jks")
+            storePassword "qq657036139"
+            keyAlias "mvpdemo"
+            keyPassword "qq657036139"
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            //指定打包后的apk文件名 使用命令gradle assembleRelease/assembleDebug打Release/Debug包
+//            applicationVariants.all {
+//                variant ->
+//                    variant.outputs.each {
+//                        output ->
+//                            def outFile = output.outputFile
+//                            if (null != outFile && outFile.name.endsWith(".apk")) {
+//                                def fileName = "${variant.productFlavors[0].name}" + ".apk"
+//                                output.outputFile = new File(outFile.parent, fileName)
+//                            }
+//                    }
+//            }
         }
     }
+//写法一多渠道脚本支持
+//    productFlavors {
+//        //小米市场
+//        xiaomi {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+//            //需要将value文件夹下的strings.xml中的app_name注释掉就不会报错
+////            resValue "string","app_name","xiaomi_app"
+//        }
+//        //豌豆荚市场
+//        wandoujia {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+//            //需要将value文件夹下的strings.xml中的app_name注释掉就不会报错
+////            resValue "string","app_name","wandoujia_app"
+//        }
+
+//        在同一个手机上打两个同样的包给测试测不同的功能点eg.okhttp,jpush
+//        eg.
+//        okhttp {
+//            applicationIdSuffix "okhttp"
+//            //需要将value文件夹下的strings.xml中的app_name注释掉就不会报错
+//            resValue "string", "app_name", "okhttp"
+//        }
+//        jpush {
+//            applicationIdSuffix "jpush"
+//            //需要将value文件夹下的strings.xml中的app_name注释掉就不会报错
+//            resValue "string", "app_name", "jpush"
+//        }
+//    }
+//写法二
+    productFlavors {
+        xiaomi {}
+//        wandoujia {}
+//        yingyongbao{}
+    }
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+
     //在jdk配置都正确的情况下，当使用lambda表达式时，出现异常lambda expressions are not supported at this language level的解决办法
     //1.Android studio默认使用Lambda表达式会报错，即使使用的jdk是1.8.需要借助一个插件retrolambda，该插件将java8的lambda表达式特性兼容到java5
     //2.在project 的build.gradle中加入 classpath 'me.tatarka:gradle-retrolambda:3.3.1'
@@ -54,4 +117,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+//   友盟多渠道打包
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }

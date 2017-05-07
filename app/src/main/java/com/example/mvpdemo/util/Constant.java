@@ -27,7 +27,7 @@ public final class Constant {
 
     public static final String ID_CARD_BASE_URL = "http://apis.juhe.cn/idcard/";
 
-    public static final String LOCAL_SERVICE = "http://192.168.1.100:8080/WebProject/";
+    public static final String LOCAL_SERVICE = "http://192.168.1.102:8080/WebProject/";
 
     public static final String BITMAP_PATH = "http://pic41.nipic.com/20140509/4746986_145156378323_2.jpg";
     /**
